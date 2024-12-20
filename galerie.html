@@ -8,20 +8,28 @@
     <script src="./ceva.js"></script>s
 </head>
 <body>
+    
     <section id="main">
         <div class="container"></div>
         <nav>
             <img src="./cafea/logo1.jpg" alt="Logo" class="logo1">
-            <ul class="nav-list">
-                <li><a href="index.html">Acasa</a></li>
+        
+            <!-- Buton pentru meniul burger -->
+            <button id="menu-toggle" class="menu-button">☰</button>
+        
+            <!-- Meniul de navigare -->
+            <ul id="mobile-nav" class="nav-list">
+                <li><a href="index.html">Acasă</a></li>
                 <li><a href="despre-cafea.html">Despre Cafea</a></li>
-                <li><a href="galerie.html" class="active">Galerie</a></li>
-                <li><a href="tipuri-de-cafea.html">Tipuri de Cafea</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="tipuri-de-cafea.html" class="active">Tipuri de Cafea</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+        
+            <!-- Căutare -->
             <input type="text" id="search-input" placeholder="Căutare..." class="search-input">
-           
         </nav>
+        
     </section>
 
     <div class="main-content">

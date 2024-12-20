@@ -1016,6 +1016,50 @@ nav.dark-mode, footer.dark-mode {
 .theme-button:hover {
     background-color: #777;
 }
+/* Stiluri pentru meniul burger */
+.menu-button {
+    display: none;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+#mobile-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+#mobile-nav li {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Afișează meniul burger doar pe ecrane mici */
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .nav-list.open {
+        display: flex;
+    }
+}
 
 
 
