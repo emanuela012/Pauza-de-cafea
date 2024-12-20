@@ -1060,7 +1060,12 @@ nav.dark-mode, footer.dark-mode {
         display: flex;
     }
 }
-
-
-
-
+/* Meniu normal pentru desktop */
+@media (min-width: 769px) {
+    .nav-list {
+        display: flex !important; /* Forțează afișarea meniului pe desktop */
+    }
+    #mobile-nav {
+        display: none !important; /* Ascunde meniul mobil */
+    }
+}
