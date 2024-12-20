@@ -412,13 +412,20 @@ footer {
     background-color: yellow;
     font-weight: bold;
     text-decoration: underline;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 #no-results-message {
     color: red;
     text-align: center;
-    margin-top: 20px;
     font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.istori.hidden {
+    display: none;
 }
 
 

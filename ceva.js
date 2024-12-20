@@ -93,38 +93,59 @@ if (themeButton) {
         }
     });
 }
-// Search Functionality
 const searchInput = document.querySelector('.search-input');
 if (searchInput) {
     searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase(); // Textul introdus
-        const sections = document.querySelectorAll('.istori'); // Secțiunile cu clasa .istori
-        let found = false; // Inițial, presupunem că nu s-a găsit nimic
+        const query = searchInput.value.toLowerCase();
+        const sections = document.querySelectorAll('.istori');
+        let found = false;
+
+        // Șterge mesajul de eroare anterior dacă există
+        let noResultsMessage = document.getElementById('no-results-message');
+        if (noResultsMessage) {
+            noResultsMessage.remove();
+        }
 
         sections.forEach(section => {
-            const title = section.dataset.title ? section.dataset.title.toLowerCase() : ''; // Atributele data-title
-            const heading = section.querySelector('h3') ? section.querySelector('h3').textContent.toLowerCase() : ''; // Textul din h3
+            const titleElement = section.querySelector('h3');
+            const paragraphElement = section.querySelector('p');
 
-            if (title.includes(query) || heading.includes(query)) {
-                section.style.display = 'block'; // Afișăm secțiunea dacă există o potrivire
+            // Resetează conținutul elementelor
+            titleElement.innerHTML = titleElement.textContent;
+            paragraphElement.innerHTML = paragraphElement.textContent;
+
+            const title = titleElement.textContent.toLowerCase();
+            const paragraph = paragraphElement.textContent.toLowerCase();
+
+            if (title.includes(query) || paragraph.includes(query)) {
+                section.classList.remove('hidden'); // Afișează secțiunea
                 found = true;
+
+                // Evidențiază cuvintele găsite
+                const highlightedTitle = title.replace(
+                    new RegExp(query, 'gi'),
+                    match => `<span class="highlight">${match}</span>`
+                );
+                const highlightedParagraph = paragraph.replace(
+                    new RegExp(query, 'gi'),
+                    match => `<span class="highlight">${match}</span>`
+                );
+                titleElement.innerHTML = highlightedTitle;
+                paragraphElement.innerHTML = highlightedParagraph;
             } else {
-                section.style.display = 'none'; // Ascundem secțiunea dacă nu există o potrivire
+                section.classList.add('hidden'); // Ascunde secțiunea
             }
         });
 
-        const noResultsMessage = document.getElementById('no-results-message');
+        // Dacă nu există rezultate, afișează un mesaj
         if (!found) {
-            if (!noResultsMessage) {
-                const message = document.createElement('p');
-                message.id = 'no-results-message';
-                message.textContent = 'Nu există rezultate pentru căutarea ta.';
-                message.style.color = 'red';
-                message.style.textAlign = 'center';
-                document.body.appendChild(message);
-            }
-        } else if (noResultsMessage) {
-            noResultsMessage.remove();
+            noResultsMessage = document.createElement('p');
+            noResultsMessage.id = 'no-results-message';
+            noResultsMessage.textContent = 'Nu există rezultate pentru căutarea dumneavoastră.';
+            noResultsMessage.style.color = 'red';
+            noResultsMessage.style.textAlign = 'center';
+            noResultsMessage.style.marginTop = '20px';
+            document.body.appendChild(noResultsMessage);
         }
     });
 }
