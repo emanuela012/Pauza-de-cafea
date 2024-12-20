@@ -960,3 +960,49 @@ nav.dark-mode, footer.dark-mode {
 .istori.hidden {
     display: none; /* Ascundem secțiunile dacă nu se potrivesc cu căutarea */
 }
+/* Pentru meniul mobil */
+.nav-list {
+    display: none; /* Ascunde meniul implicit pe mobil */
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(74, 44, 42, 0.9); /* Fundal maro */
+    position: absolute;
+    top: 60px; /* Sub bara de navigare */
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.nav-list.open {
+    display: flex; /* Afișează meniul când este activ */
+}
+
+.menu-button {
+    display: block; /* Afișează butonul de meniu doar pe mobil */
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #FFF8E1;
+    cursor: pointer;
+    z-index: 1010;
+}
+
+@media (min-width: 768px) {
+    .menu-button {
+        display: none; /* Ascunde butonul de meniu pe desktop */
+    }
+    .nav-list {
+        display: flex; /* Afișează meniul normal pe desktop */
+        position: static; /* Menține poziția normală */
+        flex-direction: row; /* Elemente pe un singur rând */
+        background-color: transparent;
+    }
+}
+.nav-list {
+    display: none;
+}
+
+.nav-list.open {
+    display: flex;
+}

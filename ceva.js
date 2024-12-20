@@ -75,6 +75,23 @@ if (form) {
     });
 }
 
+// Afișează sau ascunde meniul mobil la click
+if (menuButton && navList) {
+    menuButton.addEventListener('click', () => {
+        navList.classList.toggle('open');
+    });
+}
+
+// Închide meniul mobil dacă un link este accesat
+const navLinks = document.querySelectorAll('.nav-list a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navList.classList.contains('open')) {
+            navList.classList.remove('open');
+        }
+    });
+});
+
 // Dark Mode
 const themeButton = document.querySelector('.theme-button');
 const body = document.body;
