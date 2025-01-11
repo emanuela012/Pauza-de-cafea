@@ -167,8 +167,6 @@ if (searchInput) {
     });
 }
 
-
-// Carusel
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -181,23 +179,16 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-    let i;
-    const slides = document.getElementsByClassName("mySlides");
-    const dots = document.getElementsByClassName("dot");
+    const slides = document.querySelectorAll('.mySlides');
+    const dots = document.querySelectorAll('.dot');
 
     if (n > slides.length) { slideIndex = 1; }
     if (n < 1) { slideIndex = slides.length; }
 
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
+    slides.forEach(slide => slide.style.display = 'none');
+    dots.forEach(dot => dot.className = dot.className.replace(' active', ''));
 
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-
-    if (slides[slideIndex - 1]) {
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-    }
+    slides[slideIndex - 1].style.display = 'block';
+    dots[slideIndex - 1].className += ' active';
 }
+

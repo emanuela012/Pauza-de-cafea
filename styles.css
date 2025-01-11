@@ -719,33 +719,39 @@ img {
     vertical-align: middle;
     border-radius: 10px;
 }
+.prev, .next {
+    display: block !important; /* Forțează afișarea butoanelor */
+}
 
 .prev, .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
     width: auto;
-    padding: 16px;
+    padding: 10px;
     margin-top: -22px;
     color: white;
     font-weight: bold;
     font-size: 18px;
     user-select: none;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-}
-
-.next {
-    right: 0;
+    border-radius: 5px;
+    z-index: 10; /* Asigură că sunt deasupra altor elemente */
+    transition: background-color 0.3s ease;
 }
 
 .prev {
-    left: 0;
+    left: 15px; /* Poziționează butonul Previous în stânga */
+}
+
+.next {
+    right: 15px; /* Poziționează butonul Next în dreapta */
 }
 
 .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8); /* Fundal mai închis la hover */
 }
+
 
 .dot {
     cursor: pointer;
@@ -960,3 +966,4 @@ nav.dark-mode, footer.dark-mode {
 .istori.hidden {
     display: none; /* Ascundem secțiunile dacă nu se potrivesc cu căutarea */
 }
+
